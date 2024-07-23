@@ -1,0 +1,29 @@
+klasörleri oluşturdum 
+data db için,
+views önyüz için,
+routes sayfa yönlendirmeleri için(users.js),
+public static css image için
+config.js db bağlantısı için
+
+
+
+1.adım
+---expres frameworküyle çalışmak için projeye eklemek gerekiyo
+eklemeden önce paketleri görüntülemek için yanii kütüphane bağımlılıkları
+ve paket versiyonları için 
+******** npm init --yes diyoruz
+
+2.adım
+daha sonra expressi import ediyoruz, 
+******** npm i express
+
+3.adım
+her seferinde tek tek çalıştırmamak için nodemon ı global olarak yüklüyoruz
+******** npm i nodemon -g  (artık pcye yüklü)
+daha sonra nodemon index.js diyerek proje çalışır
+
+4.adım
+ejs kullanıyoruz
+dinamik içerik oluşturuyoruz
+dosya işlemleri fln kolay diye 
+****** npm i ejs

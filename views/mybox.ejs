@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kelime Sepeti</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+    <h2 id="title_box">Let's create own word box!</h2>
+    <div class="input-section" id="input-section">
+
+        <input type="text" id="englishWord" placeholder="English Word">
+        <input type="text" id="turkishWord" placeholder="Turkish Word">
+        <button id="addButton">Add Box</button>
+        <button id="startButton">Start</button>
+    </div>
+
+    <div class="basket" id="basket">
+        <h2>Word List</h2>
+        <ul id="wordList"></ul>
+    </div>
+
+
+    <div class="scene" id="scene" style="display: none;">
+        <div class="box" id="box">
+            <div class="face front">Word Box</div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top" id="top"><span id="selectZ">Click</span></div>
+            <div class="face bottom"></div>
+            <div class="paper" id="paper"></div>
+        </div>
+    </div>
+
+    <h3 id="answerText" style="display: none;">Click the box!</h3>
+
+    <div class="answer-section" id="answer-section" style="display: none;">
+        <p id="questionText"></p>
+        <input type="text" id="userAnswer" placeholder="Write answer">
+        <button id="submitAnswer">Send reply</button>
+    </div>
+
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="resultMessage"></p>
+        </div>
+    </div>
+
+
+
+    <script src="/js/mybox.js"></script>
+</body>
+
+</html>
