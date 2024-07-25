@@ -25,9 +25,16 @@ document.addEventListener("DOMContentLoaded", function () {
     let allWords = [];
     let currentWord = null;
     let askEnglish = true;
-    let correctNum=0;
-    let message ="";
-    
+    let correctNum = 0;
+    let message = "";
+
+    document.getElementById('box').classList.add('shake');
+
+    // Kutunun tıklanmasıyla titremenin durması
+    document.getElementById('box').addEventListener('click', function () {
+        this.classList.remove('shake');
+    });
+
     function showGameResult(correctAnswers, totalQuestions) {
         // Sonuç mesajını oluştur
         let message_ = `Kelime oyunu bitti! Başarı: ${correctAnswers}/${totalQuestions}<br><br>Kelime Sonuçları:<br>`;
@@ -36,11 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Modal kapatma
-    span.onclick = function() {
+    span.onclick = function () {
         modal.style.display = "none";
     }
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
@@ -51,12 +58,12 @@ document.addEventListener("DOMContentLoaded", function () {
             box.classList.remove("open-top");
         }
         else {
-            if(allWords.length>0){
+            if (allWords.length > 0) {
                 box.classList.toggle("open-top");
                 createAsk();
             }
-            else{
-                showGameResult(correctNum, words.length*2,message);
+            else {
+                showGameResult(correctNum, words.length * 2, message);
             }
         }
     });
@@ -85,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const editButton = document.createElement("i");
         editButton.classList.add("fas", "fa-edit");
         editButton.style.marginRight = "3px";
-        editButton.style.color="#e67e22";
+        editButton.style.color = "#e67e22";
         editButton.addEventListener("click", function () {
             editWord(word, li);
         });
@@ -121,27 +128,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function createAsk(){
-            const randomIndex = Math.floor(Math.random() * words.length);
-            currentWord = words[randomIndex];
-            askEnglish = Math.random() > 0.5;
-            answerText.innerText ="";
-            //sorunun ingilizce mi türkçe mi sorulacağı random belirlendi
-            if (askEnglish) {
-                if(allWords.includes(currentWord.turkish)){
-                    paper.textContent = currentWord.turkish;
-                }
-                else{
-                    createAsk();
-                }
-            } else {
-                if(allWords.includes(currentWord.english)){
-                    paper.textContent = currentWord.english;
-                }
-                else{
-                    createAsk();
-                }
+    function createAsk() {
+        const randomIndex = Math.floor(Math.random() * words.length);
+        currentWord = words[randomIndex];
+        askEnglish = Math.random() > 0.5;
+        answerText.innerText = "";
+        //sorunun ingilizce mi türkçe mi sorulacağı random belirlendi
+        if (askEnglish) {
+            if (allWords.includes(currentWord.turkish)) {
+                paper.textContent = currentWord.turkish;
             }
+            else {
+                createAsk();
+            }
+        } else {
+            if (allWords.includes(currentWord.english)) {
+                paper.textContent = currentWord.english;
+            }
+            else {
+                createAsk();
+            }
+        }
         // 'paper' elemanının transition'u bittiğinde 'questionText' içeriğini güncelle
         paper.addEventListener('transitionend', function () {
             if (askEnglish) {
@@ -158,12 +165,12 @@ document.addEventListener("DOMContentLoaded", function () {
             scene.style.display = "flex";
             basket.style.display = "none";
             titleBox.style.display = "none";
-            answerText.style.display = "flex";  
+            answerText.style.display = "flex";
             inputSection.style.display = "none";
             answerSection.style.display = "flex";
 
             createAsk();
-            
+
         }
     });
 
@@ -182,21 +189,21 @@ document.addEventListener("DOMContentLoaded", function () {
             answerText.innerText = "Correct Answer!"
             answerText.style.color = "green";
             correctNum++;
-            message += askEnglish ? 
-                ` ${currentWord.turkish} = ${currentWord.english} <span class="correct">✅</span><br> `: 
+            message += askEnglish ?
+                ` ${currentWord.turkish} = ${currentWord.english} <span class="correct">✅</span><br> ` :
                 `${currentWord.english} = ${currentWord.turkish} <span class="correct">✅</span><br>`;
         } else {
             answerText.innerText = "Wrong Answer!"
             answerText.style.color = "red";
-            message += askEnglish ? 
-                `${currentWord.turkish} = ${currentWord.english} <span class="incorrect">❌</span><br>` : 
+            message += askEnglish ?
+                `${currentWord.turkish} = ${currentWord.english} <span class="incorrect">❌</span><br>` :
                 `${currentWord.english} = ${currentWord.turkish} <span class="incorrect">❌</span><br>`;
         }
         userAnswer.value = "";
-        questionText.innerText ="";
+        questionText.innerText = "";
         topFace.click();
 
     });
 
-    
+
 });

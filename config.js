@@ -3,7 +3,7 @@ const config ={
         host:"localhost",
         user:"root",
         password:"Alpi.1905",
-        database:"db"
+        database:"word_box"
     }
 }
 

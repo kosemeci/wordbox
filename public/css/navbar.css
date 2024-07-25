@@ -1,0 +1,118 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+
+}
+
+.navbar {
+    width: 100%;
+    background-color: #2c3e50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: #ecf0f1;
+    font-size: 24px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    margin: 15px;
+    letter-spacing: 5px;
+    font-size: 32px;
+    margin-left: 120px;
+}
+
+.navbar-menu a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+    margin-right: 120px;
+}
+
+.navbar-menu a:hover {
+    text-decoration: underline;
+}
+
+.inline-icon {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+}
+
+/* Responsive design for tablet and mobile devices */
+@media (max-width: 1050px) {
+    .navbar {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .navbar-brand {
+        margin: 10px 0;
+        margin-left: 0;
+        font-size: 28px;
+        margin-left: 25px;
+
+    }
+
+    .navbar-menu {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        margin-right: 25px;
+
+    }
+
+    .navbar-menu a {
+        margin: 10px 0;
+        margin-right: 14px;
+        font-size: 20px;
+    }
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+    .navbar {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .navbar-brand {
+        margin: 10px 0;
+        margin-left: 14px;
+        font-size: 28px;
+    }
+
+    .navbar-menu {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .navbar-menu a {
+        margin: 10px 0;
+        margin-right: 14px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 24px;
+    }
+
+    .navbar-menu a {
+        display: none;
+    }
+}
+

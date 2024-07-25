@@ -3,7 +3,7 @@ const db = require("../data/db");
 const router = express.Router();
 
 
-router.use("/boxes/:box_name", (req,res)=>{
+router.use("/boxes/level_:box_name", (req,res)=>{
     const boxName = req.params.box_name;
     res.render("boxes",{ box_name : boxName }); 
 });

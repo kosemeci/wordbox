@@ -1,17 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelime Sepeti</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
 
 <body>
     <%- include('partials/navbar') %>
-    <h1> Ana Sayfadasın güzelim</h1>
 
+    <main class="container">
+        <h2><a href="/mybox" style="color: #2c3e50;">Kendi kutunu oluştur</a> ya da aşağıdaki kutulardan birine tıkla!</h2>
 
+        <div class="cards">
+            <div class="card" id="level-a">
+                <div class="box level-a">
+                    <div class="face front">A</div>
+                    <div class="face back">A</div>
+                    <div class="face left">A</div>
+                    <div class="face right">A</div>
+                    <div class="face top">A</div>
+                    <div class="face bottom">A</div>
+                </div>
+                <p>A seviyesinde 60 kelime</p>
+            </div>
+            <div class="card" id="level-a+">
+                <div class="box level-a-plus">
+                    <div class="face front">A+</div>
+                    <div class="face back">A+</div>
+                    <div class="face left">A+</div>
+                    <div class="face right">A+</div>
+                    <div class="face top">A+</div>
+                    <div class="face bottom">A+</div>
+                </div>
+                <p>A+ seviyesinde 75 kelime</p>
+            </div>
+            <div class="card" id="level-a++">
+                <div class="box level-a-plus-plus">
+                    <div class="face front">A++</div>
+                    <div class="face back">A++</div>
+                    <div class="face left">A++</div>
+                    <div class="face right">A++</div>
+                    <div class="face top">A++</div>
+                    <div class="face bottom">A++</div>
+                </div>
+                <p>A++ seviyesinde 100 kelime</p>
+            </div>
+            <div class="card">
+                <div class="box level-b">
+                    <div class="face front">B</div>
+                    <div class="face back">B</div>
+                    <div class="face left">B</div>
+                    <div class="face right">B</div>
+                    <div class="face top">B</div>
+                    <div class="face bottom">B</div>
+                </div>
+                <p>B seviyesinde 60 kelime</p>
+            </div>
+            <div class="card">
+                <div class="box level-b-plus">
+                    <div class="face front">B+</div>
+                    <div class="face back">B+</div>
+                    <div class="face left">B+</div>
+                    <div class="face right">B+</div>
+                    <div class="face top">B+</div>
+                    <div class="face bottom">B+</div>
+                </div>
+                <p>B+ seviyesinde 75 kelime</p>
+            </div>
+            <div class="card">
+                <div class="box level-b-plus-plus">
+                    <div class="face front">B++</div>
+                    <div class="face back">B++</div>
+                    <div class="face left">B++</div>
+                    <div class="face right">B++</div>
+                    <div class="face top">B++</div>
+                    <div class="face bottom">B++</div>
+                </div>
+                <p>B++ seviyesinde 100 kelime</p>
+            </div>
+            <div class="card">
+                <div class="box level-c">
+                    <div class="face front">C</div>
+                    <div class="face back">C</div>
+                    <div class="face left">C</div>
+                    <div class="face right">C</div>
+                    <div class="face top">C</div>
+                    <div class="face bottom">C</div>
+                </div>
+                <p>C seviyesinde 60 kelime</p>
+            </div>
+            <div class="card">
+                <div class="box level-c-plus">
+                    <div class="face front">C+</div>
+                    <div class="face back">C+</div>
+                    <div class="face left">C+</div>
+                    <div class="face right">C+</div>
+                    <div class="face top">C+</div>
+                    <div class="face bottom">C+</div>
+                </div>
+                <p>C+ seviyesinde 75 kelime</p>
+            </div>
+            <div class="card">
+                <div class="box level-c-plus-plus">
+                    <div class="face front">C++</div>
+                    <div class="face back">C++</div>
+                    <div class="face left">C++</div>
+                    <div class="face right">C++</div>
+                    <div class="face top">C++</div>
+                    <div class="face bottom">C++</div>
+                </div>
+                <p>C++ seviyesinde 100 kelime</p>
+            </div>
+        </div>
+        <div class="create-box">
+            <a href="/mybox" class="create-box-btn">Kendi Kutunu Oluştur</a>
+        </div>
+    </main>
 
     <script src="/js/script.js"></script>
 </body>
