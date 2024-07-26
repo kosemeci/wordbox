@@ -13,11 +13,18 @@ router.use("/mybox", (req,res)=>{
 });
 
 //routes yapısı
-router.use("/", (req,res)=>{
-    //res.send("ana sayfadasın"); 
-    //send ile bilgi gönderiliyo json olarak
-    res.render("index"); 
-    // render ile ejs klasörünü bulup ona gidiyor
+router.use("/", async (req,res)=>{
+    const query = "SELECT level, COUNT(*) AS count FROM words  GROUP BY level ORDER BY level ASC;";
+    try{
+        const [data,]= await db.execute(query);
+        res.render("index",{
+            words : data,
+        }); 
+    }
+    catch(err){
+        console.log(err);
+    }
+
 });
 
 

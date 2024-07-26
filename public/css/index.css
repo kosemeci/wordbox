@@ -78,15 +78,15 @@ h2 {
 .bottom { transform: rotateX(-90deg) translateZ(60px); }
 
 /* Renkli kutu yüzeyleri */
-.level-a .face { background-color: #3498db; }
-.level-a-plus .face { background-color: #2980b9; }
-.level-a-plus-plus .face { background-color: #1abc9c; }
-.level-b .face { background-color: #f1c40f; }
-.level-b-plus .face { background-color: #f39c12; }
-.level-b-plus-plus .face { background-color: #e67e22; }
-.level-c .face { background-color: #e74c3c; }
-.level-c-plus .face { background-color: #c0392b; }
-.level-c-plus-plus .face { background-color: #8e44ad; }
+.color1 .face { background-color: #61b1e6; }
+.color2 .face { background-color: #2980b9; }
+.color3 .face { background-color: #1abc9c; }
+.color4 .face { background-color: #f1c40f; }
+.color5 .face { background-color: #f39c12; }
+.color6 .face { background-color: #e67e22; }
+.color7 .face { background-color: #e74c3c; }
+.color8 .face { background-color: #9d2b1f; }
+.color9 .face { background-color: #561472; }
 
 .create-box {
     margin-top: 30px;
