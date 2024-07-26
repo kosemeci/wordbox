@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/css/box.css">
+
+<div class="scene" id="scene" style="display: none;">
+    <div class="box" id="box">
+        <div class="face front">Word Box</div>
+        <div class="face back"></div>
+        <div class="face left"></div>
+        <div class="face right"></div>
+        <div class="face top" id="top"><span id="selectZ">Click</span></div>
+        <div class="face bottom"></div>
+        <div class="paper" id="paper"></div>
+    </div>
+</div>
+<h3 id="answerText" style="display: none;">Click the box!</h3>
+
+    <div class="answer-section" id="answer-section" style="display: none;">
+        <p id="questionText"></p>
+        <input type="text" id="userAnswer" placeholder="Write answer">
+        <button id="submitAnswer">Send reply</button>
+    </div>
+
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="resultMessage"></p>
+        </div>
+    </div>

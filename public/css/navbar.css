@@ -31,6 +31,8 @@ body, html {
     letter-spacing: 5px;
     font-size: 32px;
     margin-left: 120px;
+    cursor: pointer; /* Fare imleci tıklanabilir simgeye dönüşür */
+
 }
 
 .navbar-menu a {
