@@ -51,7 +51,7 @@
 }
 
 .top {
-    background-color: #cf8613;
+    background-color: #E5A601;
     border-color: #c8c7c5;
 }
 
@@ -185,4 +185,44 @@
 .shake {
     animation: shake 0.5s; /* Duration of the shake effect */
     animation-iteration-count: infinite; /* Repeat indefinitely */
+}
+
+#submitAnswer {
+    background-color: #E5A601; 
+    border: none; 
+    color: white; 
+    padding: 11px 22px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 12px; 
+    transition: background-color 0.3s, transform 0.3s; /* Geçiş efekti */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Gölge efekti */
+}
+
+#submitAnswer:hover {
+    background-color: #e68900; 
+    transform: scale(1.05); 
+}
+#submitAnswer:active {
+    background-color: #cc7a00; 
+    transform: scale(1); 
+}
+
+#userAnswer {
+    padding: 12px; 
+    box-sizing: border-box; 
+    border: 1px solid #2c3e50; 
+    border-radius: 12px; 
+    font-size: 16px; 
+    outline: none; 
+    transition: border-color 0.3s, box-shadow 0.3s; 
+}
+
+#userAnswer:focus {
+    border-color: #2c3e50;  
+    box-shadow: 0 0 8px rgba(229, 166, 1, 0.5); 
 }

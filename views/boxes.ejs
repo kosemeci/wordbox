@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/boxes.css">
+    <link rel="icon" href="/images/box.png" type="image/png">
     <title>Word Box</title>
 </head>
 
 <body>
     <%- include('partials/navbar') %>
         <div class="container-box">
+
             <%- include('partials/box') %>
-                <ul style="margin-top: 10%;">
-                    <% data.forEach(word=> { %>
-                        <li>
-                            <%= word.turkish %> - <%= word.english %>
-                        </li>
-                        <% }) %>
-                </ul>
+                <div id="words" style="display: none;">
+                    <ul style="margin-top: 10%;">
+                        <% data.forEach(word=> { %>
+                            <li>
+                                <%= word.english %> - <%= word.turkish %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                </div>
+
         </div>
 
 

@@ -38,6 +38,7 @@ h2 {
     margin-top: 40px;
     font-size: 16px;
     color: #333;
+    min-width: 185px;
 }
 
 .box {
@@ -76,9 +77,9 @@ h2 {
 .bottom { transform: rotateX(-90deg) translateZ(60px); }
 
 /* Renkli kutu yüzeyleri */
-.color1 .face { background-color: #61b1e6; }
-.color2 .face { background-color: #2980b9; }
-.color3 .face { background-color: #1abc9c; }
+.color1 .face { background-color: #5be2e2; }
+.color2 .face { background-color: #4da2db; }
+.color3 .face { background-color: #206b9d; }
 .color4 .face { background-color: #f1c40f; }
 .color5 .face { background-color: #f39c12; }
 .color6 .face { background-color: #e67e22; }

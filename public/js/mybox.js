@@ -152,9 +152,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // 'paper' elemanının transition'u bittiğinde 'questionText' içeriğini güncelle
         paper.addEventListener('transitionend', function () {
             if (askEnglish) {
-                questionText.textContent = `"${currentWord.turkish}" kelimesinin İngilizcesi nedir?`;
+
+                questionText.textContent = `What is the English translation of "${currentWord.turkish}"?`;
             } else {
-                questionText.textContent = `"${currentWord.english}" kelimesinin Türkçesi nedir?`;
+                questionText.textContent = `What is the Turkish translation of "${currentWord.english}"?`;
             }
 
         }, { once: true });
@@ -168,6 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
             answerText.style.display = "flex";
             inputSection.style.display = "none";
             answerSection.style.display = "flex";
+            answerText.style.display = "flex";
 
             createAsk();
 
@@ -204,6 +206,5 @@ document.addEventListener("DOMContentLoaded", function () {
         topFace.click();
 
     });
-
 
 });

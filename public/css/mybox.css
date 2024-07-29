@@ -6,7 +6,6 @@
     align-items: center;
 }
 
-
 #addButton {
     background-color: #e67e22;
     color: #ffffff;
@@ -51,15 +50,12 @@
     color: #888;
 }
 
-
-
 .input-section {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 .input-section input {
     margin: 0 5px;
@@ -100,8 +96,6 @@
     justify-content: space-between;
 }
 
-
-
 #basket {
     margin-top: 20px;
     width: 350px;
@@ -113,7 +107,6 @@
     display: none;
     max-height: 260px; /* Maksimum yükseklik belirlenir */
     overflow-y: auto; /* Dikey scroll bar ekler */
-
 }
 
 #basket h2 {
@@ -148,6 +141,3 @@
     background-color: #d5dfe5;
     border-color: #a8b0b5;
 }
-
-
-

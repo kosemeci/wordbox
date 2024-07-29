@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelime Sepeti</title>
+    <link rel="icon" href="/images/box.png" type="image/png">
+    <title>Word Box</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
@@ -13,9 +14,9 @@
     <%- include('partials/navbar') %>
 
     <main class="container">
-        <h2><a href="/mybox" style="color: #2c3e50;">Kendi kutunu oluştur</a> ya da aşağıdaki kutulardan birine tıkla!</h2>
+        <h2><a href="/mybox" style="color: #2c3e50;">Create your own box </a> or click one of the boxes below!</h2>
         <div class="cards"> <% words.forEach((word,index) => { %>
-            <div class="card color<%=index%>" id="<%= word.level %>">
+            <div class="card color<%=++index%>" id="<%= word.level %>">
                 <div class="box level-a">
                     <div class="face front"><%= word.level %></div>
                     <div class="face back"><%= word.level %></div>
@@ -24,12 +25,12 @@
                     <div class="face top"><%= word.level %></div>
                     <div class="face bottom"><%= word.level %></div>
                 </div>
-                <p><%= word.level %> seviyesinde <%= word.count %> kelime</p>
+                <p><%= word.count %> words at level <%= word.level %> </p>
             </div>
         <% }) %></div>
 
         <div class="create-box">
-            <a href="/mybox" class="create-box-btn">Kendi Kutunu Oluştur</a>
+            <a href="/mybox" class="create-box-btn">Create your own box</a>
         </div>
     </main>
 
