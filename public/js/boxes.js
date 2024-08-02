@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function showGameResult(correctAnswers, totalQuestions) {
         // Sonuç mesajını oluştur
         const point = (correctAnswers/totalQuestions)*100;
-        let message_ = `<div style="text-align: center;"><h2>The word game is over!</h2></div> <h4 class="yellow-color">Success: ${point}% </h4> Word Results:<br>`;
+        let message_ = `<div style="text-align: center;"><h2>The word game is over!</h2></div> <h3 class="yellow-color">Success: ${point}% </h3> Word Results:<br>`;
         document.getElementById("resultMessage").innerHTML = message_ + message;
         modal.style.display = "block";
     }
@@ -67,48 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    topFace.addEventListener("click", function () {
-        if (box.classList.contains("open-top")) {
-            submitAnswerButton.disabled = true ;
-            box.classList.remove("open-top");
-        }
-        else {
-            if (ask_index < ask_line) {
-                submitAnswerButton.disabled = false ;
-                box.classList.toggle("open-top");
-                createAsk();
-            }
-            else {
-                submitAnswerButton.disabled = true;
-                showGameResult(correctNum, ask_line, message);
 
-            }
-        }
-    });
-
-    function createAsk() {
-        ask_index++;
-        const randomIndex = Math.floor(Math.random() * words.length);
-        currentWord = words[randomIndex];
-        askEnglish = Math.random() > 0.5;
-        answerText.innerText = "";
-        progressContainer.style.display = "flex";
-
-
-        if (askEnglish) {
-            paper.textContent = currentWord.Turkish;
-        } else {
-            paper.textContent = currentWord.English;
-        }
-        paper.addEventListener('transitionend', function () {
-            if (askEnglish) {
-                questionText.textContent = `What is the English translation of "${currentWord.Turkish}"?`;
-            } else {
-                questionText.textContent = `What is the Turkish translation of "${currentWord.English}"?`;
-            }
-
-        }, { once: true });
-    }
 
     submitAnswerButton.addEventListener("click", function () {
 
