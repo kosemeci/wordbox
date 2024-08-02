@@ -19,6 +19,10 @@ router.use("/mybox", (req,res)=>{
     res.render("mybox"); 
 });
 
+router.use("/a", (req,res)=>{
+    res.render("a"); 
+});
+
 //routes yapısı
 router.use("/", async (req,res)=>{
     const query = "SELECT level, COUNT(*) AS count FROM words  GROUP BY level ORDER BY level ASC;";
