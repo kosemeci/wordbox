@@ -9,22 +9,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const answerText = document.getElementById("answerText");
     const modal = document.getElementById("resultModal");
     const span = document.getElementsByClassName("close")[0];
+    const progressContainer = document.querySelector('.progress-container');
 
 
     scene.style.display = "flex";
     answerText.style.display = "block";
     answerSection.style.display = "flex";
 
-
     document.getElementById('box').classList.add('shake');
+    submitAnswerButton.disabled = true ;
+
 
     const words = [];
+    const red_color = "#E74C3C";
+    const green_color = "#2ECC71";
     let currentWord = null;
     let askEnglish = true;
     let correctNum = 0;
     let message = "";
     let ask_index = 0;
-    let ask_line = 5;
+    let ask_line = 2;
+    let progress = 0;
+
 
     // 'words' div'inin içindeki tüm 'li' elemanlarını seç
     const listItems = document.querySelectorAll("#words li");
@@ -45,7 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showGameResult(correctAnswers, totalQuestions) {
         // Sonuç mesajını oluştur
-        let message_ = `Kelime oyunu bitti! Başarı: ${correctAnswers}/${totalQuestions}<br><br>Kelime Sonuçları:<br>`;
+        const point = (correctAnswers/totalQuestions)*100;
+        let message_ = `<div style="text-align: center;"><h2>The word game is over!</h2></div> <h4 class="yellow-color">Success: ${point}% </h4> Word Results:<br>`;
         document.getElementById("resultMessage").innerHTML = message_ + message;
         modal.style.display = "block";
     }
@@ -62,10 +69,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     topFace.addEventListener("click", function () {
         if (box.classList.contains("open-top")) {
+            submitAnswerButton.disabled = true ;
             box.classList.remove("open-top");
         }
         else {
             if (ask_index < ask_line) {
+                submitAnswerButton.disabled = false ;
                 box.classList.toggle("open-top");
                 createAsk();
             }
@@ -83,6 +92,8 @@ document.addEventListener("DOMContentLoaded", function () {
         currentWord = words[randomIndex];
         askEnglish = Math.random() > 0.5;
         answerText.innerText = "";
+        progressContainer.style.display = "flex";
+
 
         if (askEnglish) {
             paper.textContent = currentWord.Turkish;
@@ -101,20 +112,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     submitAnswerButton.addEventListener("click", function () {
 
+        let isCorrect = false;
         const answer = userAnswer.value.trim().toLowerCase();
-        let ask = paper.innerText;
 
         let correctAnswer = askEnglish ? currentWord.English.toLowerCase() : currentWord.Turkish.toLowerCase();
         if (answer === correctAnswer) {
             answerText.innerText = "Correct Answer!"
-            answerText.style.color = "green";
+            answerText.style.color = green_color;
             correctNum++;
-            message += `${currentWord.English} = ${currentWord.Turkish} <span class="correct">✅</span><br>`;
+            isCorrect = true;
+            message += `<span class="yellow-border"> 
+            ${currentWord.English} = ${currentWord.Turkish} 
+            <span>✅</span></span><br>`;
         } else {
             answerText.innerText = "Wrong Answer!"
-            answerText.style.color = "red";
-            message += `${currentWord.English} = ${currentWord.Turkish} <span class="incorrect">❌</span><br>`;
+            answerText.style.color = red_color;
+            isCorrect = false;
+            message += `<span class="yellow-border"> 
+            ${currentWord.English} = ${currentWord.Turkish} 
+            <span>❌</span></span><br>`;
         }
+
+        if (progress < 99) {
+
+            progress += 100 / ask_line;
+            const segment = document.createElement('div');
+            segment.classList.add('progress-segment');
+            segment.style.width = (100 / ask_line) + '%';
+            segment.style.backgroundColor = isCorrect ? green_color : red_color;
+            progressContainer.appendChild(segment);
+
+        }
+
         userAnswer.value = "";
         questionText.innerText = "";
         topFace.click();

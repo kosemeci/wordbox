@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmented Progress Bar</title>
+    <style>
+        .progress-container {
+            width: 80%;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+            border: 1px solid #ccc;
+        }
+        .progress-segment {
+            height: 100%;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container" id="progressContainer">
+    </div>
+    <button id="progressButton">Advance Progress</button>
+
+    <script>
+        const progressContainer = document.getElementById('progressContainer');
+        const progressButton = document.getElementById('progressButton');
+        let progress = 0;
+        const ask_line = 10; // Total steps
+
+        progressButton.addEventListener('click', () => {
+            // Simulate correct or incorrect answer
+            const isCorrect = Math.random() >= 0.5; // Random true or false
+
+            if (progress < 100) {
+                progress += 100 / ask_line;
+
+                // Create a new segment
+                const segment = document.createElement('div');
+                segment.classList.add('progress-segment');
+                segment.style.width = (100 / ask_line) + '%';
+                segment.style.backgroundColor = isCorrect ? 'green' : 'red';
+
+                // Add the segment to the container
+                progressContainer.appendChild(segment);
+            }
+        });
+    </script>
+</body>
+</html>
