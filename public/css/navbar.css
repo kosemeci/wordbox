@@ -23,6 +23,8 @@ body, html {
     position: fixed;
     top: 0;
     z-index: 1000;
+    border-bottom: 3px ridge  #E5A601;
+
 }
 
 .navbar-brand {
@@ -43,7 +45,7 @@ body, html {
 }
 
 .navbar-menu a:hover {
-    text-decoration: underline;
+    text-decoration: underline #E5A601;
 }
 
 .inline-icon {
