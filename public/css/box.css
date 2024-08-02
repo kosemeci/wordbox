@@ -138,35 +138,42 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     padding-top: 60px;
 }
+
 .modal-content {
-    background-color: #fefefe;
+    background-color: #2C3E50; /* Koyu mavi arka plan */
+    color: #ffffff; /* Beyaz yazı rengi */
     margin: 5% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 55%;
+    border: 2px solid #E5A601;
+    border-radius: 10px; /* Köşeleri yuvarlama */
+    width: 30%;
 }
+
 .close {
-    color: #aaa;
+    color: #E5A601; /* Altın sarısı renk */
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
-    color: black;
+    color: #ffffff; /* Beyaz renk */
     text-decoration: none;
     cursor: pointer;
 }
-.correct {
-    color: green;
+
+.yellow-border {
+    border: 2px solid #E5A601; /* Altın sarısı border */
+    padding: 4px;
+    border-radius: 5px;
+    margin-bottom: 4px; /* Alt boşluk */
+    display: inline-block; /* Her satırı blok öğesi olarak göster */
 }
-.incorrect {
-    color: red;
-}
+
 
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotateX(-35deg) rotateY(-45deg); }
@@ -225,4 +232,23 @@
 #userAnswer:focus {
     border-color: #2c3e50;  
     box-shadow: 0 0 8px rgba(229, 166, 1, 0.5); 
+}
+
+.progress-container {
+    width: 80%;
+    height: 16px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-segment {
+    height: 100%; /* Yüksekliği tam olarak kapsayacak şekilde güncelleme */
+    width: 0; /* Başlangıçta 0 genişliğinde olacak şekilde ayarlandı */
+    background-color: #76c7c0; /* İlerleme rengini belirleyin */
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.yellow-color{
+    color:#E5A601;
 }
