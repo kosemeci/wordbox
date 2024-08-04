@@ -1,6 +1,4 @@
 .scene {
-    /* width: 400px;
-    height: 300px; */
     perspective: 1000px;
     margin: 50px;
 }
@@ -24,7 +22,8 @@
     font-size: 20px;
     font-weight: bold;
     color: #fff;
-    border: 10px solid #ccc;
+    border: 8px solid #ccc; 
+
 }
 
 .front {
@@ -41,6 +40,7 @@
     background-color: #2c3e50;
     border-color: #c8c7c5;
     border-radius:15px ;
+    border: 8px solid #ccc;
 
 }
 
@@ -48,6 +48,9 @@
     background-color: #2c3e50;
     border-color: #c8c7c5;
     border-radius:15px ;
+    border: 8px solid #ccc;
+
+
 }
 
 .top {
@@ -85,8 +88,8 @@
 
 .front { transform: rotateY(  45deg) translateZ(50px); }
 .back { transform: rotateY(225deg) translateZ(50px); }
-.left { width: 100px; height: 100px; transform: rotateY(-45deg) translateZ(78px) translateX(75px); }
-.right { width: 100px; height: 100px; transform: rotateY( 135deg) translateZ(220px) translateX(-75px); }
+.left { width: 100px; height: 100px; transform: rotateY(-45deg) translateZ(78px) translateX(70px); }
+.right { width: 100px; height: 100px; transform: rotateY( 135deg) translateZ(220px) translateX(-70px); }
 .top { width: 300px; height: 100px; transform: rotateY(  45deg) rotateX( 90deg) translateZ(53px); transition: transform 1s; }
 .bottom { width: 300px; height: 100px; transform: rotateY(  45deg) rotateX(-90deg) translateZ(50px); }
 
@@ -251,4 +254,54 @@
 
 .yellow-color{
     color:#E5A601;
+}
+
+
+@media (max-width: 650px) {
+    .box {
+        width: 200px; /* Kutunun genişliği ve yüksekliği küçültüldü */
+        height: 70px;
+    }
+    .face {
+        width: 200px; /* Yüzeylerin genişliği ve yüksekliği küçültüldü */
+        height: 70px;
+        font-size: 16px; /* Yazı fontu küçültüldü */
+        border: 5px solid #ccc; /* Border genişliği küçültüldü */
+    }
+    .left, .right {
+        width: 100px; /* Yan yüzeylerin genişliği küçültüldü */
+        height: 70px;
+    }
+    .paper {
+        width: 150px; /* Kağıdın genişliği ve yüksekliği küçültüldü */
+        height: 30px;
+        top: 35px;
+        left: 25px;
+        font-size: 14px; /* Yazı fontu küçültüldü */
+    }
+    .answer-section p {
+        font-size: 14px; /* Yazı fontu küçültüldü */
+        margin-top: 10px;
+    }
+    .answer-section input, .answer-section button {
+        font-size: 14px; /* Yazı fontu küçültüldü */
+        padding: 4px; /* Padding küçültüldü */
+    }
+    .modal-content {
+        margin-top: 25px;
+        width: 80%; 
+        padding: 10px; 
+    }
+    .front { transform: rotateY(45deg) translateZ(50px); }
+    .back { transform: rotateY(225deg) translateZ(50px); }
+    .left { width: 100px; height: 70px; transform: rotateY(-45deg) translateZ(64px) translateX(30px); }
+    .right { width: 100px; height: 70px; transform: rotateY(135deg) translateZ(135px) translateX(-30px); }
+    .top { width: 200px; height: 100px; transform: rotateY(45deg) rotateX(90deg) translateZ(50px); transition: transform 1s; }
+    .bottom { width: 200px; height: 70px; transform: rotateY(45deg) rotateX(-90deg) translateZ(50px); }
+    .box.open-top .paper {
+        transform: translateY(-80px) rotateY(45deg) translateZ(45px) translateX(5px);
+    }
+    .progress-container{
+        height: 12px;
+    }
 }

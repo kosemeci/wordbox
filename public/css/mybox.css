@@ -11,6 +11,10 @@
     color: #ffffff;
     border: none;
     font-size: 17px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    border-radius: 5px; 
+
 }
 
 #addButton:hover {
@@ -22,6 +26,10 @@
     color: #ffffff;
     border: none;
     font-size: 17px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    border-radius: 5px; 
+
 
 }
 
@@ -34,7 +42,7 @@
     padding: 10px;
     font-size: 16px;
     width: 220px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s, box-shadow 0.3s;
@@ -72,8 +80,6 @@
 .basket {
     margin-top: 20px;
     width: 300px;
-    background-color: #fff;
-    border: 2px solid #ccc;
     padding: 10px;
     display: none;
 }
@@ -100,7 +106,7 @@
     margin-top: 20px;
     width: 350px;
     background-color: #ffffff;
-    border: 2px solid #ccc;
+    border: 2px solid #E5A601;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -121,6 +127,7 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+
 }
 
 #wordList li {
@@ -128,7 +135,7 @@
     font-size: 16px;
     color: #2c3e50;
     background-color: #ecf0f1;
-    border: 1px solid #bdc3c7;
+    /* border: 1px solid #2c3e50; */
     border-radius: 4px;
     margin-bottom: 8px;
     display: flex;
@@ -140,4 +147,52 @@
 #wordList li:hover {
     background-color: #d5dfe5;
     border-color: #a8b0b5;
+}
+
+@media (max-width: 600px) {
+    .container-mybox {
+        margin-top: 20%;
+        padding: 0 10px;
+    }
+
+    #title_box {
+        margin-top: 24px;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .input-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .input-section input, .input-section button {
+        width: 100%;
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    #addButton, #startButton {
+        padding: 8px 0;
+        font-size: 14px;
+    }
+
+    .basket {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    #basket {
+        width: 100%;
+        padding: 15px;
+    }
+
+    #basket h2 {
+        font-size: 20px;
+    }
+
+    #wordList li {
+        font-size: 14px;
+        padding: 8px;
+    }
 }

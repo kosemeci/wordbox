@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     const scene = document.getElementById("scene");
     const topFace = document.getElementById("top");
     const inputSection = document.getElementById("input-section");
@@ -28,11 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let correctNum = 0;
     let message = "";
     let ask_index = 0;
-    let ask_line = 2;
+    let ask_line = 4;
     let progress = 0;
 
-
-    // 'words' div'inin içindeki tüm 'li' elemanlarını seç
     const listItems = document.querySelectorAll("#words li");
     listItems.forEach((item) => {
 
@@ -58,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     span.onclick = function () {
-        modal.style.display = "none";
+        window.location.href = "/"
     }
 
     window.onclick = function (event) {
@@ -67,7 +66,46 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    topFace.addEventListener("click", function () {
+        if (box.classList.contains("open-top")) {
+            submitAnswerButton.disabled = true ;
+            box.classList.remove("open-top");
+        }
+        else {
+            if (ask_index < ask_line) {
+                submitAnswerButton.disabled = false ;
+                box.classList.toggle("open-top");
+                createAsk();
+            }
+            else {
+                submitAnswerButton.disabled = true;
+            }
+        }
+    });
 
+    function createAsk() {
+        ask_index++;
+        const randomIndex = Math.floor(Math.random() * words.length);
+        currentWord = words[randomIndex];
+        askEnglish = Math.random() > 0.5;
+        answerText.innerText = "";
+        progressContainer.style.display = "flex";
+
+
+        if (askEnglish) {
+            paper.textContent = currentWord.Turkish;
+        } else {
+            paper.textContent = currentWord.English;
+        }
+        paper.addEventListener('transitionend', function () {
+            if (askEnglish) {
+                questionText.textContent = `What is the English translation of "${currentWord.Turkish}"?`;
+            } else {
+                questionText.textContent = `What is the Turkish translation of "${currentWord.English}"?`;
+            }
+
+        }, { once: true });
+    }
 
     submitAnswerButton.addEventListener("click", function () {
 
@@ -92,8 +130,16 @@ document.addEventListener("DOMContentLoaded", function () {
             <span>❌</span></span><br>`;
         }
 
-        if (progress < 99) {
+        updateProgress(isCorrect);
 
+        userAnswer.value = "";
+        questionText.innerText = "";
+        topFace.click();
+
+    });
+
+    function updateProgress(isCorrect) {
+        if (progress < 100) {
             progress += 100 / ask_line;
             const segment = document.createElement('div');
             segment.classList.add('progress-segment');
@@ -101,12 +147,10 @@ document.addEventListener("DOMContentLoaded", function () {
             segment.style.backgroundColor = isCorrect ? green_color : red_color;
             progressContainer.appendChild(segment);
 
+            if (progress >= 100) {
+                showGameResult(correctNum, ask_line);
+            }
         }
-
-        userAnswer.value = "";
-        questionText.innerText = "";
-        topFace.click();
-
-    });
+    }
 
 }); 

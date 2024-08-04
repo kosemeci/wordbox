@@ -106,20 +106,70 @@ h2 {
     background-color: #1a242f;
 }
 
-/* Responsive design */
 @media (max-width: 600px) {
+    .container {
+        margin-top: 120px; 
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 0 25px;
+    }
+
     .cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        width: 85%;
+        padding: 14px;
+        font-size: 14px;
+        margin-bottom: 10px;
+
+    }
+
+    .card p {
+        margin-top: 10px;
+        font-size: 14px;
+        min-width: auto;
     }
 
     .box {
-        width: 100px;
+        width: 60px;
         height: 100px;
-        font-size: 20px;
     }
 
     .face {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
+        font-size: 16px;
     }
+
+    .create-box {
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+
+    .create-box-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .front  { transform: translateZ(30px); }
+    .back   { transform: rotateY(180deg) translateZ(30px); }
+    .left   { transform: rotateY(-90deg) translateZ(30px); }
+    .right  { transform: rotateY(90deg) translateZ(30px); }
+    .top    { transform: rotateX(90deg) translateZ(30px); }
+    .bottom { transform: rotateX(-90deg) translateZ(30px); }
 }
+
+
+

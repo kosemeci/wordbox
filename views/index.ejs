@@ -14,7 +14,7 @@
     <%- include('partials/navbar') %>
 
     <main class="container">
-        <h2><a href="/mybox" style="color: #2c3e50;">Create your own box </a> or click one of the boxes below!</h2>
+        <h2><a href="/mybox" style="color:#2c3e50 ;text-decoration: underline #E5A601;">Create your own box </a> or click one of the boxes below!</h2>
         <div class="cards"> <% words.forEach((word,index) => { %>
             <div class="card color<%=++index%>" id="<%= word.level %>">
                 <div class="box level-a">

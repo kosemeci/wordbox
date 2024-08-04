@@ -3,52 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segmented Progress Bar</title>
+    <title>QR Code Display</title>
     <style>
-        .progress-container {
-            width: 80%;
-            height: 20px;
-            background-color: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 20px;
+        body {
             display: flex;
-            border: 1px solid #ccc;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
-        .progress-segment {
-            height: 100%;
-            transition: width 0.3s ease, background-color 0.3s ease;
+        #container {
+            text-align: center;
+        }
+        #qr-code {
+            width: 250px; /* QR kodun boyutunu buradan ayarlayabilirsiniz */
+            height: 250px;
+            margin: 0 auto;
+        }
+        #status {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="progress-container" id="progressContainer">
+    <div id="container">
+        <div id="qr-code">
+            <img id="qr-img" src="" alt="QR Code">
+        </div>
+        <div id="status">Scan this QR code with your phone</div>
     </div>
-    <button id="progressButton">Advance Progress</button>
 
     <script>
-        const progressContainer = document.getElementById('progressContainer');
-        const progressButton = document.getElementById('progressButton');
-        let progress = 0;
-        const ask_line = 10; // Total steps
+        const qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=http://192.168.1.39:3000/mybox'; // QR kodu içeriği
 
-        progressButton.addEventListener('click', () => {
-            // Simulate correct or incorrect answer
-            const isCorrect = Math.random() >= 0.5; // Random true or false
-
-            if (progress < 100) {
-                progress += 100 / ask_line;
-
-                // Create a new segment
-                const segment = document.createElement('div');
-                segment.classList.add('progress-segment');
-                segment.style.width = (100 / ask_line) + '%';
-                segment.style.backgroundColor = isCorrect ? 'green' : 'red';
-
-                // Add the segment to the container
-                progressContainer.appendChild(segment);
-            }
-        });
+        document.getElementById('qr-img').src = qrCodeUrl;
     </script>
 </body>
 </html>

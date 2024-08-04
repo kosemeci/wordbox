@@ -20,15 +20,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const answerText = document.getElementById("answerText");
     const modal = document.getElementById("resultModal");
     const span = document.getElementsByClassName("close")[0];
+    const progressContainer = document.querySelector('.progress-container');
 
     let words = [];
-    let allWords = [];
     let currentWord = null;
     let askEnglish = true;
     let correctNum = 0;
     let message = "";
+    const red_color = "#E74C3C";
+    const green_color = "#2ECC71";
+    let ask_index = 0;
+    let ask_line = 0;
+    let progress = 0;
 
     document.getElementById('box').classList.add('shake');
+    submitAnswerButton.disabled = true ;
+
 
     // Kutunun tıklanmasıyla titremenin durması
     document.getElementById('box').addEventListener('click', function () {
@@ -37,14 +44,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showGameResult(correctAnswers, totalQuestions) {
         // Sonuç mesajını oluştur
-        let message_ = `Kelime oyunu bitti! Başarı: ${correctAnswers}/${totalQuestions}<br><br>Kelime Sonuçları:<br>`;
+        const point = (correctAnswers/totalQuestions)*100;
+        let message_ = `<div style="text-align: center;"><h2>The word game is over!</h2></div> <h3 class="yellow-color">Success: ${point}% </h3> Word Results:<br>`;
         document.getElementById("resultMessage").innerHTML = message_ + message;
         modal.style.display = "block";
     }
 
-    // Modal kapatma
     span.onclick = function () {
-        modal.style.display = "none";
+        window.location.href = "/mybox"
     }
 
     window.onclick = function (event) {
@@ -55,15 +62,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     topFace.addEventListener("click", function () {
         if (box.classList.contains("open-top")) {
+            submitAnswerButton.disabled = true ;
             box.classList.remove("open-top");
         }
         else {
-            if (allWords.length > 0) {
+            if (ask_index < ask_line) {
+                submitAnswerButton.disabled = false ;
                 box.classList.toggle("open-top");
                 createAsk();
             }
             else {
-                showGameResult(correctNum, words.length * 2, message);
+                submitAnswerButton.disabled = true;
+                showGameResult(correctNum, ask_line, message);
+
             }
         }
     });
@@ -71,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
     addButton.addEventListener("click", function () {
         const englishWord = englishWordInput.value.trim();
         const turkishWord = turkishWordInput.value.trim();
-        allWords.push(englishWord, turkishWord);
         if (englishWord && turkishWord) {
             const word = { english: englishWord, turkish: turkishWord };
             words.push(word);
@@ -88,36 +98,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const buttonContainer = document.createElement("div");
         buttonContainer.classList.add("button-container");
-
-        const editButton = document.createElement("i");
-        editButton.classList.add("fas", "fa-edit");
-        editButton.style.marginRight = "3px";
-        editButton.style.color = "#e67e22";
-        editButton.addEventListener("click", function () {
-            editWord(word, li);
-        });
-
+    
         const deleteButton = document.createElement("i");
         deleteButton.classList.add("fas", "fa-trash-alt");
         deleteButton.addEventListener("click", function () {
             deleteWord(word, li);
         });
 
-        buttonContainer.appendChild(editButton);
         buttonContainer.appendChild(deleteButton);
         li.appendChild(buttonContainer);
         wordList.appendChild(li);
-    }
-
-    function editWord(word, li) {
-        const newEnglishWord = prompt("Yeni İngilizce Kelime:", word.english);
-        const newTurkishWord = prompt("Yeni Türkçe Kelime:", word.turkish);
-
-        if (newEnglishWord && newTurkishWord) {
-            word.english = newEnglishWord;
-            word.turkish = newTurkishWord;
-            li.firstChild.textContent = `${word.english} = ${word.turkish}`;
-        }
     }
 
     function deleteWord(word, li) {
@@ -129,30 +119,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function createAsk() {
+        ask_index++;
         const randomIndex = Math.floor(Math.random() * words.length);
         currentWord = words[randomIndex];
         askEnglish = Math.random() > 0.5;
         answerText.innerText = "";
-        //sorunun ingilizce mi türkçe mi sorulacağı random belirlendi
+        progressContainer.style.display = "flex";
+
+
         if (askEnglish) {
-            if (allWords.includes(currentWord.turkish)) {
-                paper.textContent = currentWord.turkish;
-            }
-            else {
-                createAsk();
-            }
+            paper.textContent = currentWord.turkish;
         } else {
-            if (allWords.includes(currentWord.english)) {
-                paper.textContent = currentWord.english;
-            }
-            else {
-                createAsk();
-            }
+            paper.textContent = currentWord.english;
         }
-        // 'paper' elemanının transition'u bittiğinde 'questionText' içeriğini güncelle
         paper.addEventListener('transitionend', function () {
             if (askEnglish) {
-
                 questionText.textContent = `What is the English translation of "${currentWord.turkish}"?`;
             } else {
                 questionText.textContent = `What is the Turkish translation of "${currentWord.english}"?`;
@@ -170,41 +151,55 @@ document.addEventListener("DOMContentLoaded", function () {
             inputSection.style.display = "none";
             answerSection.style.display = "flex";
             answerText.style.display = "flex";
-
-            createAsk();
-
+            ask_line = words.length;
         }
     });
 
     submitAnswerButton.addEventListener("click", function () {
-        //başındaki ve sonundaki boşlukları temizle küçük harfe çevir
+
+        let isCorrect = false;
         const answer = userAnswer.value.trim().toLowerCase();
-        let ask = paper.innerText;
-        //aynı soru bir daha gelmemesi için çıkan soruyu sildim
-        let index = allWords.indexOf(ask);
-        if (index !== -1) {
-            allWords.splice(index, 1);
-        }
-        //soru ingilizceyse ingilizceyi türkçeyse türkçeyi alıyo
+
         let correctAnswer = askEnglish ? currentWord.english.toLowerCase() : currentWord.turkish.toLowerCase();
         if (answer === correctAnswer) {
             answerText.innerText = "Correct Answer!"
-            answerText.style.color = "green";
+            answerText.style.color = green_color;
             correctNum++;
-            message += askEnglish ?
-                ` ${currentWord.turkish} = ${currentWord.english} <span class="correct">✅</span><br> ` :
-                `${currentWord.english} = ${currentWord.turkish} <span class="correct">✅</span><br>`;
+            isCorrect = true;
+            message += `<span class="yellow-border"> 
+            ${currentWord.english} = ${currentWord.turkish} 
+            <span>✅</span></span><br>`;
         } else {
             answerText.innerText = "Wrong Answer!"
-            answerText.style.color = "red";
-            message += askEnglish ?
-                `${currentWord.turkish} = ${currentWord.english} <span class="incorrect">❌</span><br>` :
-                `${currentWord.english} = ${currentWord.turkish} <span class="incorrect">❌</span><br>`;
+            answerText.style.color = red_color;
+            isCorrect = false;
+            message += `<span class="yellow-border"> 
+            ${currentWord.english} = ${currentWord.turkish} 
+            <span>❌</span></span><br>`;
         }
+
+        updateProgress(isCorrect);
+
         userAnswer.value = "";
         questionText.innerText = "";
         topFace.click();
 
     });
+
+    function updateProgress(isCorrect) {
+        if (progress < 100) {
+            progress += 100 / ask_line;
+            const segment = document.createElement('div');
+            segment.classList.add('progress-segment');
+            segment.style.width = (100 / ask_line) + '%';
+            segment.style.backgroundColor = isCorrect ? green_color : red_color;
+            progressContainer.appendChild(segment);
+
+            // Progress 100 olduğunda showGameResult fonksiyonunu çağır
+            if (progress >= 100) {
+                showGameResult(correctNum, ask_line);
+            }
+        }
+    }
 
 });

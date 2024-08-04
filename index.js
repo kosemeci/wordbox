@@ -10,6 +10,6 @@ app.use(express.static("node_modules")); //bootstrap css i de dışarıya açmak
 
 app.use(userRoutes);
 
-app.listen(3000,()=>{
+app.listen(3000,'0.0.0.0',()=>{
     console.log("server is running at 3000 port");
 })
